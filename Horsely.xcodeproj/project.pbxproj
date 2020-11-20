@@ -3,19 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7033B382CA20004DF37A083 /* Pods_Horsely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333E883D0BD6E9931D181841 /* Pods_Horsely.framework */; };
+		F0025539250B282B00E7C5E8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0025538250B282B00E7C5E8 /* Home.swift */; };
+		F002553B250BAA6B00E7C5E8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002553A250BAA6B00E7C5E8 /* CardView.swift */; };
+		F002553D250BC04000E7C5E8 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002553C250BC04000E7C5E8 /* Reading.swift */; };
+		F002553F250BF69800E7C5E8 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002553E250BF69800E7C5E8 /* Mood.swift */; };
+		F0297EA2251A337C0038709D /* WeatherPredictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0297EA1251A337C0038709D /* WeatherPredictions.swift */; };
+		F02DD38A251CD9F200AEA095 /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DD389251CD9F200AEA095 /* Trends.swift */; };
+		F02E76C625277DFE00A62B0B /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E76C525277DFD00A62B0B /* ArticleView.swift */; };
+		F02E8A3025243BD40011837F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F02E8A2E25243BD40011837F /* Model.xcdatamodeld */; };
+		F02E8A362524D2BC0011837F /* AddReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E8A352524D2BC0011837F /* AddReminder.swift */; };
+		F02E8A382524DD940011837F /* LogSymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E8A372524DD940011837F /* LogSymptoms.swift */; };
 		F03695A62501612E00A9EC0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03695A52501612E00A9EC0F /* AppDelegate.swift */; };
 		F03695A82501612E00A9EC0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03695A72501612E00A9EC0F /* SceneDelegate.swift */; };
 		F03695AA2501612E00A9EC0F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03695A92501612E00A9EC0F /* ContentView.swift */; };
 		F03695AC2501613500A9EC0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03695AB2501613500A9EC0F /* Assets.xcassets */; };
 		F03695AF2501613500A9EC0F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03695AE2501613500A9EC0F /* Preview Assets.xcassets */; };
 		F03695B22501613500A9EC0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03695B02501613500A9EC0F /* LaunchScreen.storyboard */; };
+		F0864F9F25485CF900BA2E0B /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0864F9E25485CF900BA2E0B /* Habit.swift */; };
+		F0864FA125485DAC00BA2E0B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0864FA025485DAC00BA2E0B /* DateExtension.swift */; };
+		F09A1812250F146400BC7C1C /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09A1811250F146400BC7C1C /* AccountButton.swift */; };
+		F0A4028B2546850E004D0FBB /* ExpadedLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4028A2546850E004D0FBB /* ExpadedLog.swift */; };
+		F0A4028D25480646004D0FBB /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4028C25480646004D0FBB /* Goals.swift */; };
+		F0A661A9252BBF0E00FD3416 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A661A8252BBF0E00FD3416 /* ImagePicker.swift */; };
+		F0DA90182548E90B000C0C65 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA90172548E90B000C0C65 /* Login.swift */; };
+		F0DA901A2548FE39000C0C65 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA90192548FE39000C0C65 /* ViewRouter.swift */; };
+		F0DA901C25499833000C0C65 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA901B25499833000C0C65 /* CreateAccount.swift */; };
+		F0DF1584251CB9A700F11776 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF1583251CB9A700F11776 /* Reminders.swift */; };
+		F0DF1586251CBBC400F11776 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF1585251CBBC400F11776 /* CalendarView.swift */; };
+		F0EB8FC2250AFA1F00B60434 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EB8FC1250AFA1F00B60434 /* Colors.xcassets */; };
+		F0EB8FC4250AFB6300B60434 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB8FC3250AFB6300B60434 /* ColorManager.swift */; };
+		F0F40B02251CF0AC0013C22C /* WeeklyMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F40B01251CF0AC0013C22C /* WeeklyMood.swift */; };
+		F0F648D92561453400EB7C62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F648D82561453400EB7C62 /* GoogleService-Info.plist */; };
+		F0F648DB2561F0F000EB7C62 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F648DA2561F0F000EB7C62 /* SessionStore.swift */; };
+		F0F648E52565572B00EB7C62 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F648E42565572B00EB7C62 /* UserProfile.swift */; };
+		F0F648E72565FAA400EB7C62 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F648E62565FAA400EB7C62 /* KeyboardGuardian.swift */; };
+		F0FDE1702503C42A00783C3E /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FDE16F2503C42A00783C3E /* ReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		333E883D0BD6E9931D181841 /* Pods_Horsely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Horsely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74166D4BD1B8FB52D9CFA18C /* Pods-Horsely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Horsely.debug.xcconfig"; path = "Target Support Files/Pods-Horsely/Pods-Horsely.debug.xcconfig"; sourceTree = "<group>"; };
+		95AB9487D3FDA2BE485D3C83 /* Pods-Horsely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Horsely.release.xcconfig"; path = "Target Support Files/Pods-Horsely/Pods-Horsely.release.xcconfig"; sourceTree = "<group>"; };
+		F0025538250B282B00E7C5E8 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		F002553A250BAA6B00E7C5E8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		F002553C250BC04000E7C5E8 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		F002553E250BF69800E7C5E8 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		F0297EA1251A337C0038709D /* WeatherPredictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPredictions.swift; sourceTree = "<group>"; };
+		F02DD389251CD9F200AEA095 /* Trends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
+		F02E76C525277DFD00A62B0B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		F02E8A2F25243BD40011837F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F02E8A352524D2BC0011837F /* AddReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminder.swift; sourceTree = "<group>"; };
+		F02E8A372524DD940011837F /* LogSymptoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSymptoms.swift; sourceTree = "<group>"; };
 		F03695A22501612E00A9EC0F /* Horsely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Horsely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03695A52501612E00A9EC0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03695A72501612E00A9EC0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +67,25 @@
 		F03695AE2501613500A9EC0F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F03695B12501613500A9EC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03695B32501613500A9EC0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0864F9E25485CF900BA2E0B /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		F0864FA025485DAC00BA2E0B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		F09A1811250F146400BC7C1C /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
+		F0A4028A2546850E004D0FBB /* ExpadedLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpadedLog.swift; sourceTree = "<group>"; };
+		F0A4028C25480646004D0FBB /* Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
+		F0A661A8252BBF0E00FD3416 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F0DA90172548E90B000C0C65 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		F0DA90192548FE39000C0C65 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		F0DA901B25499833000C0C65 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		F0DF1583251CB9A700F11776 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
+		F0DF1585251CBBC400F11776 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		F0EB8FC1250AFA1F00B60434 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F0EB8FC3250AFB6300B60434 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		F0F40B01251CF0AC0013C22C /* WeeklyMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMood.swift; sourceTree = "<group>"; };
+		F0F648D82561453400EB7C62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0F648DA2561F0F000EB7C62 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		F0F648E42565572B00EB7C62 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F0F648E62565FAA400EB7C62 /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
+		F0FDE16F2503C42A00783C3E /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +93,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7033B382CA20004DF37A083 /* Pods_Horsely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21E1D491AB3214E7FCA1C632 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74166D4BD1B8FB52D9CFA18C /* Pods-Horsely.debug.xcconfig */,
+				95AB9487D3FDA2BE485D3C83 /* Pods-Horsely.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9C8DCE61E751B610E9BD0148 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				333E883D0BD6E9931D181841 /* Pods_Horsely.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F03695992501612E00A9EC0F = {
 			isa = PBXGroup;
 			children = (
 				F03695A42501612E00A9EC0F /* Horsely */,
 				F03695A32501612E00A9EC0F /* Products */,
+				21E1D491AB3214E7FCA1C632 /* Pods */,
+				9C8DCE61E751B610E9BD0148 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +138,19 @@
 		F03695A42501612E00A9EC0F /* Horsely */ = {
 			isa = PBXGroup;
 			children = (
+				F0F648E32564231D00EB7C62 /* Colors */,
+				F0F648DD2563DF1F00EB7C62 /* Home */,
+				F0F648DC2563DE8E00EB7C62 /* Login and Create */,
 				F03695A52501612E00A9EC0F /* AppDelegate.swift */,
 				F03695A72501612E00A9EC0F /* SceneDelegate.swift */,
-				F03695A92501612E00A9EC0F /* ContentView.swift */,
+				F0F648DA2561F0F000EB7C62 /* SessionStore.swift */,
 				F03695AB2501613500A9EC0F /* Assets.xcassets */,
 				F03695B02501613500A9EC0F /* LaunchScreen.storyboard */,
 				F03695B32501613500A9EC0F /* Info.plist */,
+				F0F648D82561453400EB7C62 /* GoogleService-Info.plist */,
 				F03695AD2501613500A9EC0F /* Preview Content */,
+				F02E8A2E25243BD40011837F /* Model.xcdatamodeld */,
+				F0F648E62565FAA400EB7C62 /* KeyboardGuardian.swift */,
 			);
 			path = Horsely;
 			sourceTree = "<group>";
@@ -75,6 +163,93 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F0F648DC2563DE8E00EB7C62 /* Login and Create */ = {
+			isa = PBXGroup;
+			children = (
+				F0DA90192548FE39000C0C65 /* ViewRouter.swift */,
+				F03695A92501612E00A9EC0F /* ContentView.swift */,
+				F0DA90172548E90B000C0C65 /* Login.swift */,
+				F0DA901B25499833000C0C65 /* CreateAccount.swift */,
+				F0F648E42565572B00EB7C62 /* UserProfile.swift */,
+			);
+			path = "Login and Create";
+			sourceTree = "<group>";
+		};
+		F0F648DD2563DF1F00EB7C62 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F09A1811250F146400BC7C1C /* AccountButton.swift */,
+				F0025538250B282B00E7C5E8 /* Home.swift */,
+				F02E8A372524DD940011837F /* LogSymptoms.swift */,
+				F0A661A8252BBF0E00FD3416 /* ImagePicker.swift */,
+				F0F648E22563E01400EB7C62 /* Reminders */,
+				F0F648E12563DFD800EB7C62 /* Education */,
+				F0F648E02563DFB300EB7C62 /* Weather */,
+				F0F648DF2563DF6600EB7C62 /* Trends */,
+				F0F648DE2563DF3A00EB7C62 /* Goals */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F0F648DE2563DF3A00EB7C62 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				F0864FA025485DAC00BA2E0B /* DateExtension.swift */,
+				F0864F9E25485CF900BA2E0B /* Habit.swift */,
+				F0A4028C25480646004D0FBB /* Goals.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		F0F648DF2563DF6600EB7C62 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				F0DF1585251CBBC400F11776 /* CalendarView.swift */,
+				F002553E250BF69800E7C5E8 /* Mood.swift */,
+				F0F40B01251CF0AC0013C22C /* WeeklyMood.swift */,
+				F02DD389251CD9F200AEA095 /* Trends.swift */,
+			);
+			path = Trends;
+			sourceTree = "<group>";
+		};
+		F0F648E02563DFB300EB7C62 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				F0297EA1251A337C0038709D /* WeatherPredictions.swift */,
+				F0A4028A2546850E004D0FBB /* ExpadedLog.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		F0F648E12563DFD800EB7C62 /* Education */ = {
+			isa = PBXGroup;
+			children = (
+				F002553C250BC04000E7C5E8 /* Reading.swift */,
+				F002553A250BAA6B00E7C5E8 /* CardView.swift */,
+				F02E76C525277DFD00A62B0B /* ArticleView.swift */,
+			);
+			path = Education;
+			sourceTree = "<group>";
+		};
+		F0F648E22563E01400EB7C62 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				F0DF1583251CB9A700F11776 /* Reminders.swift */,
+				F02E8A352524D2BC0011837F /* AddReminder.swift */,
+				F0FDE16F2503C42A00783C3E /* ReminderView.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		F0F648E32564231D00EB7C62 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				F0EB8FC3250AFB6300B60434 /* ColorManager.swift */,
+				F0EB8FC1250AFA1F00B60434 /* Colors.xcassets */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +257,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F03695B62501613500A9EC0F /* Build configuration list for PBXNativeTarget "Horsely" */;
 			buildPhases = (
+				C83D7C2E6A26D36BB46AD73C /* [CP] Check Pods Manifest.lock */,
 				F036959E2501612E00A9EC0F /* Sources */,
 				F036959F2501612E00A9EC0F /* Frameworks */,
 				F03695A02501612E00A9EC0F /* Resources */,
+				71B5151BEC2B4421B0017462 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -119,6 +296,9 @@
 				Base,
 			);
 			mainGroup = F03695992501612E00A9EC0F;
+			packageReferences = (
+				F0297E9E25199B400038709D /* XCRemoteSwiftPackageReference "swiftUI-slide-over-card" */,
+			);
 			productRefGroup = F03695A32501612E00A9EC0F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,6 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F03695B22501613500A9EC0F /* LaunchScreen.storyboard in Resources */,
+				F0EB8FC2250AFA1F00B60434 /* Colors.xcassets in Resources */,
+				F0F648D92561453400EB7C62 /* GoogleService-Info.plist in Resources */,
 				F03695AF2501613500A9EC0F /* Preview Assets.xcassets in Resources */,
 				F03695AC2501613500A9EC0F /* Assets.xcassets in Resources */,
 			);
@@ -141,14 +323,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		71B5151BEC2B4421B0017462 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Horsely/Pods-Horsely-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Horsely/Pods-Horsely-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Horsely/Pods-Horsely-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C83D7C2E6A26D36BB46AD73C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Horsely-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F036959E2501612E00A9EC0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0DF1584251CB9A700F11776 /* Reminders.swift in Sources */,
+				F0F648E72565FAA400EB7C62 /* KeyboardGuardian.swift in Sources */,
+				F0EB8FC4250AFB6300B60434 /* ColorManager.swift in Sources */,
+				F0DF1586251CBBC400F11776 /* CalendarView.swift in Sources */,
+				F02DD38A251CD9F200AEA095 /* Trends.swift in Sources */,
+				F0A4028B2546850E004D0FBB /* ExpadedLog.swift in Sources */,
+				F0864FA125485DAC00BA2E0B /* DateExtension.swift in Sources */,
+				F002553B250BAA6B00E7C5E8 /* CardView.swift in Sources */,
 				F03695A62501612E00A9EC0F /* AppDelegate.swift in Sources */,
+				F0F648E52565572B00EB7C62 /* UserProfile.swift in Sources */,
+				F0297EA2251A337C0038709D /* WeatherPredictions.swift in Sources */,
+				F002553F250BF69800E7C5E8 /* Mood.swift in Sources */,
+				F0DA901C25499833000C0C65 /* CreateAccount.swift in Sources */,
 				F03695A82501612E00A9EC0F /* SceneDelegate.swift in Sources */,
+				F0FDE1702503C42A00783C3E /* ReminderView.swift in Sources */,
+				F0A661A9252BBF0E00FD3416 /* ImagePicker.swift in Sources */,
+				F0DA901A2548FE39000C0C65 /* ViewRouter.swift in Sources */,
+				F0DA90182548E90B000C0C65 /* Login.swift in Sources */,
+				F0F40B02251CF0AC0013C22C /* WeeklyMood.swift in Sources */,
+				F0025539250B282B00E7C5E8 /* Home.swift in Sources */,
+				F002553D250BC04000E7C5E8 /* Reading.swift in Sources */,
+				F02E8A382524DD940011837F /* LogSymptoms.swift in Sources */,
 				F03695AA2501612E00A9EC0F /* ContentView.swift in Sources */,
+				F02E8A3025243BD40011837F /* Model.xcdatamodeld in Sources */,
+				F0A4028D25480646004D0FBB /* Goals.swift in Sources */,
+				F0864F9F25485CF900BA2E0B /* Habit.swift in Sources */,
+				F0F648DB2561F0F000EB7C62 /* SessionStore.swift in Sources */,
+				F09A1812250F146400BC7C1C /* AccountButton.swift in Sources */,
+				F02E8A362524D2BC0011837F /* AddReminder.swift in Sources */,
+				F02E76C625277DFE00A62B0B /* ArticleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,10 +533,12 @@
 		};
 		F03695B72501613500A9EC0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74166D4BD1B8FB52D9CFA18C /* Pods-Horsely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Horsely/Preview Content\"";
+				DEVELOPMENT_TEAM = GXW4MZ68M4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Horsely/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -301,10 +554,12 @@
 		};
 		F03695B82501613500A9EC0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95AB9487D3FDA2BE485D3C83 /* Pods-Horsely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Horsely/Preview Content\"";
+				DEVELOPMENT_TEAM = GXW4MZ68M4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Horsely/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -340,6 +595,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0297E9E25199B400038709D /* XCRemoteSwiftPackageReference "swiftUI-slide-over-card" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/moifort/swiftUI-slide-over-card.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCVersionGroup section */
+		F02E8A2E25243BD40011837F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F02E8A2F25243BD40011837F /* Model.xcdatamodel */,
+			);
+			currentVersion = F02E8A2F25243BD40011837F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F036959A2501612E00A9EC0F /* Project object */;
 }

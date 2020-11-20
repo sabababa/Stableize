@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Daily" representedClassName="Daily" syncable="YES" codeGenerationType="class">
+        <attribute name="abnormal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dustExposure" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="freqCough" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="medsTaken" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mood" optional="YES" attributeType="String"/>
+        <attribute name="mucus" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="performance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pollen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="symptoms" optional="YES" attributeType="String"/>
+        <attribute name="temperature" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="triggers" optional="YES" attributeType="String"/>
+        <attribute name="whichMeds" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="HorseMedications" representedClassName="HorseMedications" syncable="YES" codeGenerationType="class">
+        <attribute name="administration" optional="YES" attributeType="String"/>
+        <attribute name="amount" optional="YES" attributeType="String"/>
+        <attribute name="dosageType" optional="YES" attributeType="String"/>
+        <attribute name="medID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Horses" representedClassName="Horses" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="vetName" optional="YES" attributeType="String"/>
+        <attribute name="vetNumber" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+        <attribute name="currentDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="mood" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="StoredImage" representedClassName="StoredImage" syncable="YES" codeGenerationType="class">
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Daily" positionX="-36" positionY="36" width="128" height="253"/>
+        <element name="HorseMedications" positionX="-9" positionY="99" width="128" height="118"/>
+        <element name="Horses" positionX="-18" positionY="117" width="128" height="118"/>
+        <element name="Reminder" positionX="-54" positionY="-9" width="128" height="88"/>
+        <element name="StoredImage" positionX="-27" positionY="117" width="128" height="58"/>
+    </elements>
+</model>
