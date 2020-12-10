@@ -45,13 +45,18 @@ struct WeeklyMood: View {
             // 4.
     )
     var reminders: FetchedResults<Daily>
+    var dayComp = DateComponents(day: -1)
     
     var body: some View {
         VStack{
                         List{
-                            ForEach(reminders, id: \.mood) {
-                            NewMood(daily: $0)
-                            }.onDelete(perform: deleteReminder)
+                            NewMood(date: Date(), mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -1), to: Date())!, mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -2), to: Date())!, mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -3), to: Date())!, mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -4), to: Date())!, mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -5), to: Date())!, mood: "", triggers: "", dV: true)
+                            NewMood(date: Calendar.current.date(byAdding: DateComponents(day: -6), to: Date())!, mood: "", triggers: "", dV: true)
                         }
             
         }

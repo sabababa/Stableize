@@ -22,6 +22,9 @@ struct UserProfile: View {
     @State var loading = false
     @State var error = false
 
+    func getUser () {
+        session.listen()
+    }
     
     func signIn () {
         loading = true
@@ -33,9 +36,10 @@ struct UserProfile: View {
             } else {
                 self.username = ""
                 self.password = ""
+                
+                
             }
         }
-        self.ref.child("users").child(self.user!.uid).setValue(["email": user?.email])
     }
     func signUp () {
         loading = true
@@ -47,7 +51,7 @@ struct UserProfile: View {
             } else {
                 self.username = ""
                 self.password = ""
-                
+                self.viewRouter.currentPage = "page5"
                 
             }
         }
@@ -63,12 +67,10 @@ struct UserProfile: View {
             }
             Button(action: {
                 self.signUp()
-                self.signIn()
-                self.viewRouter.currentPage = "page3"
             }){
                 CreateButtonContent()
             }
-        }
+        }.onAppear(perform: getUser)
     }
 }
 

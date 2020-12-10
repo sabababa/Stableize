@@ -41,6 +41,7 @@ struct CreateAccount: View {
     )
     var meds: FetchedResults<HorseMedications>
     
+    
     @State var username: String = ""
     @State var password: String = ""
     @State var vetName: String = ""
@@ -64,9 +65,7 @@ struct CreateAccount: View {
     @State var error = false
     var ref = Database.database().reference()
     let user = Auth.auth().currentUser
-    func getUser () {
-        session.listen()
-    }
+    
           
     var bronchodilators = ["albuterol", "clenbuterol", "salmeterol", "ipratroprium", "None"]
     var corticosteroids = ["dexamethasone- ", "prednisolone", "fluticasone", "budesonide", "beclomethasone,ciclesonide", "None"]
@@ -149,8 +148,11 @@ struct CreateAccount: View {
             Button(action: {
                 print("Pressed")
                 let uid = self.user?.uid
-                self.viewRouter.currentPage = "page2"
+                self.newBroc(bronc: self.bronchodilators[self.selectedB], admin: self.route[self.admin], dosage: self.dosageType[self.dosage])
+                self.newCort(cort: self.corticosteroids[self.selectedC], c_admin: self.route[self.c_admin], c_dosage: self.dosageType[self.c_dosage])
+                self.newOther(other: self.other, o_admin: self.route[self.o_admin], o_dosage: self.dosageType[self.o_dosage])
                 //Corticosteroids
+                self.ref.child("users").child(uid!).child("name").setValue(self.name)
                 self.ref.child("users").child(uid!).child("medications").child("Corticosteroids").child("name")
                     .setValue(self.corticosteroids[self.selectedC])
                 self.ref.child("users").child(uid!).child("medications").child("Corticosteroids").child("route")
@@ -175,13 +177,15 @@ struct CreateAccount: View {
                 self.ref.child("users").child(uid!).child("Vet").child("name").setValue(self.vetName)
                 self.ref.child("users").child(uid!).child("Vet").child("number").setValue(self.vetNumber)
                 //Horse Name
-                self.ref.child("users").child(uid!).child("Horse").child("name").setValue(self.name)
+                
                 self.ref.child("users").child(uid!).child("email").setValue(self.user?.email)
+                self.ref.child("users").child(uid!).child("isActive").setValue(true)
+                self.viewRouter.currentPage = "page2"
                 print(self.user?.uid)
             }) {
                 CreateButtonContent()
             }
-        }.onAppear(perform: getUser)
+        }
         }
     }
     

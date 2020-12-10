@@ -32,7 +32,6 @@ class SessionStore : ObservableObject {
                 
             } else {
                 // if we don't have a user, set our session to nil
-                self.ref.child("users").child(user!.uid).setValue(["email": user?.email])
                 self.session = nil
             }
         }
@@ -44,7 +43,6 @@ class SessionStore : ObservableObject {
         handler: @escaping AuthDataResultCallback
         ) {
         Auth.auth().createUser(withEmail: email, password: password, completion: handler)
-        
     }
 
     func signIn(

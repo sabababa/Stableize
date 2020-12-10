@@ -15,6 +15,7 @@ struct LogSymptoms: View {
     static let DefaultReminderTitle = "An untitled masterpiece"
     @State var mood: String = ""
     @State var triggers: String = ""
+    @State var name: String = ""
     @State var dustExposure: Bool = true
     @State var pollen: Bool = true
     @State var humidity: Bool = true
@@ -102,7 +103,6 @@ struct LogSymptoms: View {
                    Section {
                        Button(action: {
                         self.addMoveAction()
-                       
                         let uid = self.user?.uid
                         self.ref.child("users").child(uid!).child("logs").child(LogSymptoms.releaseFormatter.string(from: self.date)).child("triggers").child("dust").setValue(self.dustExposure)
                         self.ref.child("users").child(uid!).child("logs").child(LogSymptoms.releaseFormatter.string(from: self.date)).child("triggers").child("pollen").setValue(self.pollen)
@@ -129,7 +129,7 @@ struct LogSymptoms: View {
     
     private func addMoveAction() {
         mood = moods[selectedMood]
-      onComplete(mood, triggers, symptoms, "", medsTaken, date)
+      onComplete(mood, triggers, symptoms, name, medsTaken, date)
     }
 }
 

@@ -8,6 +8,8 @@
 
 import SwiftUI
 import FSCalendar
+import FirebaseDatabase
+import FirebaseAuth
 
 class CalendarModule: UIViewController, FSCalendarDelegate {
     
@@ -27,7 +29,9 @@ class CalendarModule: UIViewController, FSCalendarDelegate {
         calendar.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width)
         calendar.appearance.todayColor = UIColor.systemGreen
         calendar.appearance.selectionColor = UIColor.systemBlue
+        
     }
+    
 }
 
 class get {
@@ -35,6 +39,7 @@ class get {
     let calen = CalendarModule()
     init() {
         self.date = calen.calendar.selectedDate ?? Date()
+        print(self.date)
     }
 }
 struct CalendarModuleViewController: UIViewControllerRepresentable {
@@ -67,19 +72,10 @@ struct CalendarModuleViewController: UIViewControllerRepresentable {
 
 struct CalendarModuleView: View {
     let cal = CalendarModule()
-   
-    @Environment(\.managedObjectContext) var managedObjectContext
-          // 1.
-          @FetchRequest(
-            // 2.
-            entity: Daily.entity(),
-            // 3.
-            sortDescriptors: [
-                NSSortDescriptor(keyPath: \Daily.date, ascending: true)
-            ], predicate: NSPredicate(format: "date >= %@", Calendar.current.startOfDay(for: get.init().date) as NSDate)
-            // 4.
-    )
-    var reminders: FetchedResults<Daily>
+   var ref = Database.database().reference()
+   let user = Auth.auth().currentUser
+    
+    
     var body: some View {
         VStack{
            Text("Monthly View")
@@ -88,16 +84,12 @@ struct CalendarModuleView: View {
             .font(.title)
             CalendarModuleViewController()
             
-            ForEach(reminders, id: \.date) {
-            NewMood(daily: $0)
-            }
+            NewMood(date: get.init().date, mood: "", triggers: "", dV: true)
        
         }.padding(.top, -50)
     }
     
-    func selectedDate()-> Date{
-        return cal.calendar.selectedDate ?? Date()
-    }
+    
 }
 
 struct CalendarModuleView_Previews: PreviewProvider {

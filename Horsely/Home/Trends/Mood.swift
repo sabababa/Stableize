@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseDatabase
+import FirebaseAuth
 
 struct Mood: View {
     
@@ -78,112 +79,122 @@ struct Mood: View {
 
 struct NewMood : View {
     @State var isPresented = false
-     let daily: Daily
     var ref = Database.database().reference()
-     static let releaseFormatter: DateFormatter = {
-       let formatter = DateFormatter()
-       formatter.dateStyle = .long
-       return formatter
-     }()
-
-     var body: some View {
-
-       HStack(alignment: .center) {
-        Image("smile").resizable()
-                                  .frame(width: 60.0, height: 60.0)
-                                  .clipShape(Circle())
-                                  .overlay(
-                              Circle().stroke(ColorManager.darkgreen, lineWidth: 2))
-                                  .shadow(radius: 10)
-                                  .font(.title)
-                                  .padding(.leading, 20)
-                   .padding(.top, -25)
-               
-               VStack(alignment: .leading) {
-                Button(action: {
-                    self.isPresented.toggle()
-                }) {
-                   daily.date.map { Text(Self.releaseFormatter.string(from: $0)) }
-                   .font(.system(size: 12, weight: .bold, design: .default))
-                   .foregroundColor(.gray)
-                       .padding(.top, 15)
-                    }.sheet(isPresented: $isPresented) {
-                        FullView(showSheetView: self.$isPresented, ref: self.ref, mood: "", mucus: 0, freqCough: 0, abnormalBreathing: 0, performance: 0, dust: false, humidity: false, pollen: false, temperature: false)
-                        }
-                   daily.mood.map(Text.init)
-                       .font(.system(size: 26, weight: .bold, design: .default))
-                       .foregroundColor(ColorManager.darkgreen)
-                   HStack {
-                       VStack{
-                       Text("Weather")
-                           .font(.system(size: 12, weight: .bold, design: .default))
-                       .foregroundColor(ColorManager.darkgreen)
-                           .padding(.top, 40)
-                           .padding(.leading, -75)
-                           Text("65")
-                            .padding(.leading, -60)
-                       }
-                       VStack{
-                       Text("Triggers")
-                           .font(.system(size: 12, weight: .bold, design: .default))
-                       .foregroundColor(ColorManager.darkgreen)
-                           .padding(.top, 40)
-                           .padding(.leading, 45)
-                       Text("2")
-                       .padding(.leading, 50)
-                       }
-                       VStack{
-                       Text("Doctor Visit?")
-                           .font(.system(size: 12, weight: .bold, design: .default))
-                       .foregroundColor(ColorManager.darkgreen)
-                           .padding(.top, 40)
-                           .padding(.leading, 55)
-                        if(daily.medsTaken == true){
-                       Text("Yes")
-                       .padding(.leading, 43)
-                        }
-                        else{
-                            Text("No")
-                            .padding(.leading, 43)
-                        }
-                       }
-                   }
-               }.padding(.trailing, 20)
-                   .padding(.bottom, 10)
-               Spacer()
-           }
-           .frame(maxWidth: .infinity, alignment: .center)
-           .background(ColorManager.bluewhite)
-           .padding(.all, 10)
-           .shadow(radius: 10)
-       }
-}
-
-struct Today: View{
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
-             // 1.
-             @FetchRequest(
-               // 2.
-               entity: Daily.entity(),
-               // 3.
-               sortDescriptors: [
-                   NSSortDescriptor(keyPath: \Daily.date, ascending: true)
-                ], predicate: NSPredicate(format: "date >= %@", Calendar.current.startOfDay(for: Date()) as NSDate)
-               // 4.
-       )
-       var reminders: FetchedResults<Daily>
-    @ViewBuilder
+    let user = Auth.auth().currentUser
+    @State var date : Date
+    var dateAsString = ""
+    @State var mood : String
+    @State var triggers: String
+    @State var dV : Bool
+    var weather = "65"
     var body: some View {
-        if reminders.count == 0{
-             Mood(image: "smile", title: "Log Today", type: "Not Sure", price: "Symptoms")
+
+        HStack(alignment: .center) {
+            
+         Image("smile").resizable()
+                                   .frame(width: 60.0, height: 60.0)
+                                   .clipShape(Circle())
+                                   .overlay(
+                               Circle().stroke(ColorManager.darkgreen, lineWidth: 2))
+                                   .shadow(radius: 10)
+                                   .font(.title)
+                                   .padding(.leading, 20)
+                    .padding(.top, -25)
+                
+                VStack(alignment: .leading) {
+                 Button(action: {
+                     self.isPresented.toggle()
+                 }) {
+                    Text(dateAsString)
+                    .font(.system(size: 12, weight: .bold, design: .default))
+                    .foregroundColor(.gray)
+                        .padding(.top, 15)
+                     }.sheet(isPresented: $isPresented) {
+                         FullView(showSheetView: self.$isPresented, ref: self.ref, mood: "", mucus: 0, freqCough: 0, abnormalBreathing: 0, performance: 0, dust: false, humidity: false, pollen: false, temperature: false)
+                         }
+                    
+                    Text(mood)
+                        .font(.system(size: 26, weight: .bold, design: .default))
+                        .foregroundColor(ColorManager.darkgreen)
+                    HStack {
+                        VStack{
+                            
+                        Text("Weather")
+                            .font(.system(size: 12, weight: .bold, design: .default))
+                        .foregroundColor(ColorManager.darkgreen)
+                            .padding(.top, 40)
+                            .padding(.leading, -75)
+                            Text(weather)
+                             .padding(.leading, -60)
+                            
+                        }
+                        VStack{
+                        Text("Triggers")
+                            .font(.system(size: 12, weight: .bold, design: .default))
+                        .foregroundColor(ColorManager.darkgreen)
+                            .padding(.top, 40)
+                            .padding(.leading, 45)
+                        Text(triggers)
+                        .padding(.leading, 50)
+                        }
+                        VStack{
+                        Text("Doctor Visit?")
+                            .font(.system(size: 12, weight: .bold, design: .default))
+                        .foregroundColor(ColorManager.darkgreen)
+                            .padding(.top, 40)
+                            .padding(.leading, 55)
+                         if(dV == true){
+                        Text("Yes")
+                        .padding(.leading, 43)
+                         }
+                         else{
+                             Text("No")
+                             .padding(.leading, 43)
+                         }
+                        }
+                    }
+                }.padding(.trailing, 20)
+                    .padding(.bottom, 10)
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .background(ColorManager.bluewhite)
+            .padding(.all, 10)
+            .shadow(radius: 10)
+        .onAppear(perform: getData)
         }
-        ForEach(reminders, id: \.date) {
-                   NewMood(daily: $0)
-                   }
+    func getData(){
+        
+        ref.child("users").child(user!.uid).child("logs").child(LogSymptoms.releaseFormatter.string(from: date)).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let moodData = value?["mood"] as? String ?? ""
+            self.triggers = "2"
+            self.mood = moodData
+                let doctorVisit = value?["doctor's visit"] as? String ?? ""
+            if doctorVisit == "true" {
+                self.dV = true
+            }
+            else {
+            self.dV = false
+            }
+            if(self.mood == ""){
+                let input = LogSymptoms.releaseFormatter.string(from: self.date)
+                let index = input.firstIndex(of: ",") ?? input.endIndex
+                self.mood = "No Log " + input[..<index]
+                self.triggers = "-"
+                
+            }
+                let medsTaken = value?["medsTaken"] as? String ?? ""
+                
+            
+            }) { (error) in
+             print(error.localizedDescription)
+        }
+        
     }
-    
 }
+
+
 
 struct Rating : View{
     @Binding var rating: Int
@@ -224,8 +235,4 @@ struct Rating : View{
         }
     }
 }
-struct Mood_Previews: PreviewProvider {
-    static var previews: some View {
-        Today()
-    }
-}
+

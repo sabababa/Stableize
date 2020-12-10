@@ -7,9 +7,14 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+import FirebaseAuth
 
 struct ContentView: View {
     @State var isActive:Bool = false
+    let user = Auth.auth().currentUser
+    var ref = Database.database().reference()
+    
     @EnvironmentObject var viewRouter: ViewRouter
         var body: some View {
             VStack{
@@ -34,6 +39,21 @@ struct ContentView: View {
             }
         }
     }
+    
+    func getData () -> Bool{
+        var create: Bool = false
+        ref.child("users").child(user!.uid).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                
+                if (snapshot.exists() == false){
+                    create = true
+                }
+            }) { (error) in
+             print(error.localizedDescription)
+        }
+        return create
+    }
+    
 }
 
 

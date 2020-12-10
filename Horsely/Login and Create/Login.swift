@@ -25,7 +25,6 @@ struct Login: View {
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
        @State var loading = false
        @State var error = false
-       
        func getUser () {
            session.listen()
        }
@@ -40,7 +39,81 @@ struct Login: View {
                } else {
                    self.username = ""
                    self.password = ""
-                   self.viewRouter.currentPage = "page2"
+                    self.viewRouter.currentPage = "page2"
+                
+                   self.authenticationDidSucceed = true
+               }
+           }
+       }
+       
+       var body: some View {
+           ZStack{
+               VStack {
+                   WelcomeText()
+                   UserImage()
+                   UsernameTextField(username: $username)
+                   PasswordSecureField(password: $password)
+                   if authenticationDidFail {
+                       Text("Information not correct. Try again.")
+                           .offset(y: -10)
+                           .foregroundColor(.red)
+                   }
+                   
+                   Button(action:signIn) {
+                       
+                           
+                           LoginButtonContent()
+                           
+                       
+                   }
+                   .padding(.bottom, 20)
+                   Button(action: {
+                       print("Pressed")
+                       self.viewRouter.currentPage = "page4"}) {
+                       CreateButtonContent()
+                   }
+               }               .padding()
+               
+               if authenticationDidSucceed {
+                   Text("Login succeeded!")
+                   .font(.headline)
+                   .frame(width: 250, height: 80)
+                   .background(Color.green)
+                   .cornerRadius(20.0)
+                   .foregroundColor(.white)
+                   .animation(Animation.default)
+               }
+           }.onAppear(perform: getUser)
+        
+       }
+}
+struct CreateLogin: View {
+     @State var username: String = ""
+       @State var password: String = ""
+       @State var authenticationDidFail: Bool = false
+       @State var authenticationDidSucceed: Bool = false
+       @EnvironmentObject var viewRouter: ViewRouter
+       @EnvironmentObject var session: SessionStore
+    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
+       @State var loading = false
+       @State var error = false
+       func getUser () {
+           session.listen()
+       }
+       
+       func signIn () {
+           loading = true
+           error = false
+           session.signIn(email: username, password: password) { (result, error) in
+               self.loading = false
+               if error != nil {
+                   self.error = true
+               } else {
+                   self.username = ""
+                   self.password = ""
+                
+                   self.viewRouter.currentPage = "page3"
+                
                    self.authenticationDidSucceed = true
                }
            }
@@ -171,14 +244,15 @@ struct MotherView : View {
         VStack {
             if viewRouter.currentPage == "page1" {
                 Login().environmentObject(SessionStore())
+            } else if viewRouter.currentPage == "page4" {
+                UserProfile().environmentObject(SessionStore())
+            } else if viewRouter.currentPage == "page3" {
+                CreateAccount().environmentObject(SessionStore())
             } else if viewRouter.currentPage == "page2" {
                 Home(exists: exists)
             }
-            else if viewRouter.currentPage == "page3" {
-                CreateAccount().environmentObject(SessionStore())
-            }
-            else if viewRouter.currentPage == "page4" {
-                UserProfile().environmentObject(SessionStore())
+            else if viewRouter.currentPage == "page5" {
+                CreateLogin().environmentObject(SessionStore())
             }
         }.onAppear(perform: getData)
     }
@@ -186,12 +260,10 @@ struct MotherView : View {
     func getData(){
         
         ref.child("users").child(user!.uid).child("logs").child(LogSymptoms.releaseFormatter.string(from: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                
-               if(snapshot.exists()){
+                if(snapshot.exists()){
                    self.exists = true
                    print(self.exists)
-               }
+                }
             }) { (error) in
              print(error.localizedDescription)
         }

@@ -280,12 +280,15 @@ struct EditMedView: View {
         VStack{
             List{
                 ForEach(meds, id: \.name) {
-                  StoredMeds(meds: $0)
+                    
+                        StoredMeds(meds: $0)
+                    
                         
                 }
                 .onDelete(perform: deleteMed)
             }
         }.navigationBarTitle("Medications")
+        .navigationBarItems(trailing: NewButton())
     }
     func deleteMed(at offsets: IndexSet) {
       // 1.
@@ -309,7 +312,13 @@ struct EditMedView: View {
     }
 }
 
-
+struct NewButton: View {
+    var body: some View{
+        NavigationLink(destination: AddMeds()){
+            Text("+")
+        }
+    }
+}
 struct SettingsView: View {
     @Environment(\.managedObjectContext) var moc
     // 1.
@@ -440,6 +449,210 @@ struct SettingsView: View {
     }
     
 }
+
+struct AddMeds: View {
+    var bronchodilators = ["select", "albuterol", "clenbuterol", "salmeterol", "ipratroprium", "None"]
+    var corticosteroids = ["select","dexamethasone- ", "prednisolone", "fluticasone", "budesonide", "beclomethasone,ciclesonide", "None"]
+    var route = ["oral", "injection", "inhaled", "None"]
+    var dosageType = ["tablets", "milliliters", "cc's", "puffs"]
+    @State var other: String = ""
+    @State private var admin = 0
+    @State private var dosage = 0
+    @State private var c_admin = 0
+    @State private var c_dosage = 0
+    @State private var o_admin = 0
+    @State private var o_dosage = 0
+    @State private var selectedB = 0
+    @State private var selectedC = 0
+    var ref = Database.database().reference()
+    let user = Auth.auth().currentUser
+    @Environment(\.managedObjectContext) var managedObjectContext
+          // 1.
+          @FetchRequest(
+            // 2.
+            entity: Horses.entity(),
+            // 3.
+            sortDescriptors: [
+                NSSortDescriptor(keyPath: \Horses.name, ascending: true)
+            ]
+           
+            // 4.
+    )
+    var create: FetchedResults<Horses>
+    
+    @Environment(\.managedObjectContext) var moc
+          // 1.
+          @FetchRequest(
+            // 2.
+            entity: HorseMedications.entity(),
+            // 3.
+            sortDescriptors: [
+                NSSortDescriptor(keyPath: \HorseMedications.name, ascending: true)
+            ]
+           
+            // 4.
+    )
+    var meds: FetchedResults<HorseMedications>
+    var body: some View{
+        VStack{
+        Form{
+            
+            Section(header: Text("Bronchodilators")) {
+                VStack{
+                    Picker(selection: $selectedB, label: Text("Medication")) {
+                        ForEach(0 ..< bronchodilators.count) {
+                            Text(self.bronchodilators[$0])
+                        }
+                    }
+                    
+                }
+                    Picker(selection: $admin, label: Text("Route of Administration")) {
+                        ForEach(0 ..< route.count) {
+                            Text(self.route[$0])
+                        }
+                    }
+                    Picker(selection: $dosage, label: Text("Dosage")) {
+                        ForEach(0 ..< dosageType.count) {
+                            Text(self.dosageType[$0])
+                        }
+                    }
+                
+            }
+            Section(header: Text("Corticosteroids")) {
+                VStack{
+                    Picker(selection: $selectedC, label: Text("Medication")) {
+                        ForEach(0 ..< corticosteroids.count) {
+                            Text(self.corticosteroids[$0])
+                        }
+                    }
+                }
+                    Picker(selection: $c_admin, label: Text("Route of Administration")) {
+                        ForEach(0 ..< route.count) {
+                            Text(self.route[$0])
+                        }
+                    }
+                    Picker(selection: $c_dosage, label: Text("Dosage")) {
+                        ForEach(0 ..< dosageType.count) {
+                            Text(self.dosageType[$0])
+                        }
+                    }
+                
+            }
+            Section(header: Text("Other")) {
+                
+                    TextField("Name", text: $other)
+                VStack{
+                    Picker(selection: $o_admin, label: Text("Route of Administration")) {
+                        ForEach(0 ..< route.count) {
+                            Text(self.route[$0])
+                        }
+                    }
+                }
+                VStack{
+                    Picker(selection: $o_dosage, label: Text("Dosage")) {
+                        ForEach(0 ..< dosageType.count) {
+                            Text(self.dosageType[$0])
+                        }
+                    }
+                }
+            }
+            
+            Button(action: {
+                print("Pressed")
+                let uid = self.user?.uid
+                if(self.bronchodilators[self.selectedB] != "select"){
+                    self.newBroc(bronc: self.bronchodilators[self.selectedB], admin: self.route[self.admin], dosage: self.dosageType[self.dosage])
+                }
+                if(self.corticosteroids[self.selectedC] != "select"){
+                    self.newCort(cort: self.corticosteroids[self.selectedC], c_admin: self.route[self.c_admin], c_dosage: self.dosageType[self.c_dosage])
+                }
+                if(self.other != ""){
+                self.newOther(other: self.other, o_admin: self.route[self.o_admin], o_dosage: self.dosageType[self.o_dosage])
+                }
+                //Corticosteroids
+                self.ref.child("users").child(uid!).child("medications").child("Corticosteroids").child("name")
+                    .setValue(self.corticosteroids[self.selectedC])
+                self.ref.child("users").child(uid!).child("medications").child("Corticosteroids").child("route")
+                    .setValue(self.route[self.c_admin])
+                self.ref.child("users").child(uid!).child("medications").child("Corticosteroids").child("dosage")
+                    .setValue(self.dosageType[self.c_dosage])
+                //Broncodilators
+                self.ref.child("users").child(uid!).child("medications").child("Bronchodilators").child("name")
+                    .setValue(self.bronchodilators[self.selectedB])
+                self.ref.child("users").child(uid!).child("medications").child("Bronchodilators").child("route")
+                    .setValue(self.route[self.admin])
+                self.ref.child("users").child(uid!).child("medications").child("Bronchodilators").child("dosage")
+                    .setValue(self.dosageType[self.dosage])
+                //Other
+                self.ref.child("users").child(uid!).child("medications").child("Other").child("name")
+                    .setValue(self.other)
+                self.ref.child("users").child(uid!).child("medications").child("Other").child("route")
+                    .setValue(self.route[self.o_admin])
+                self.ref.child("users").child(uid!).child("medications").child("Other").child("dosage")
+                    .setValue(self.dosageType[self.o_dosage])
+                
+                print(self.user?.uid)
+            }) {
+                AddButtonContent()
+            }
+            }
+        }
+    }
+    func newBroc(bronc: String, admin: String, dosage: String) {
+      // 1
+        let storeBronc = HorseMedications(context: moc)
+        storeBronc.name = bronchodilators[selectedB]
+        storeBronc.administration = admin
+        storeBronc.dosageType = dosage
+      // 2
+
+      // 3
+      saveContext()
+    }//closes function
+    func newCort(cort: String, c_admin: String, c_dosage: String) {
+      // 1
+        let storeCort = HorseMedications(context: moc)
+      // 2
+        storeCort.name = corticosteroids[selectedC]
+        storeCort.administration = c_admin
+        storeCort.dosageType = c_dosage
+      // 3
+      saveContext()
+    }//closes function
+    
+    func newOther(other: String, o_admin: String, o_dosage: String) {
+      // 1
+        let storeOther = HorseMedications(context: moc)
+      // 2
+        storeOther.name = other
+        storeOther.administration = o_admin
+        storeOther.dosageType = o_dosage
+      // 3
+      saveContext()
+    }//closes function
+    func saveContext() {
+      do {
+        try managedObjectContext.save()
+        try moc.save()
+      } catch {
+        print("Error saving managed object context: \(error)")
+      }
+    }
+}
+
+struct AddButtonContent: View {
+    var body: some View {
+        Text("ADD")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 150, height: 40)
+            .background(Color.green)
+            .cornerRadius(15.0)
+    }
+}
+
+
 struct StoredMeds: View{
     let meds: HorseMedications
     @State private var editMode = EditMode.inactive
@@ -557,7 +770,7 @@ struct Home: View {
                         }
                         HStack{
                             VStack{
-                                Text("400")
+                                Text("150")
                                 Text("points")
                             }
                                 .font(.system(size: 15))
@@ -727,9 +940,8 @@ struct Home: View {
     
     func getData(){
         
-        ref.child("users").child(user!.uid).child("logs").child(LogSymptoms.releaseFormatter.string(from: Date())).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                
+        ref.child("users").child(user!.uid).child("logs").child(LogSymptoms.releaseFormatter.string(from: Date())).observe(.value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
                 let moodData = value?["mood"] as? String ?? ""
             self.mood = moodData
                if(snapshot.exists()){
@@ -790,7 +1002,7 @@ struct WhichRating: View {
                 }
                 if(self.mood == "Amazing"){
                     Rating(rating: .constant(5)).padding(.top, 20)
-                    Text("Bojack Feels Stablelized Today!!").font(.system(size: 20)).foregroundColor(.gray).padding(.bottom, 40)
+                    Text("Secretariat Feels Stablelized Today!!").font(.system(size: 20)).foregroundColor(.gray).padding(.bottom, 40)
                     Spacer()
                 }
                 if(self.mood == "Good"){
